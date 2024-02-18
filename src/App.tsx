@@ -1,12 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  SafeAreaView,
-  StatusBar,
-  Text,
-  View,
-} from 'react-native';
+import {ActivityIndicator, SafeAreaView, StatusBar, View} from 'react-native';
 import {setupPlayer, addTrack} from '../musicPlayerService';
+import {styles} from './styles';
+import MusicPlayer from './screens/MusicPlayer';
 
 function App(): React.JSX.Element {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
@@ -33,8 +29,10 @@ function App(): React.JSX.Element {
     <SafeAreaView>
       {isPlayerReady ? (
         <SafeAreaView>
-          <StatusBar />
-          <Text>hey there</Text>
+          <StatusBar barStyle={'light-content'} />
+          <View style={styles.container}>
+            <MusicPlayer />
+          </View>
         </SafeAreaView>
       ) : (
         <ActivityIndicator size={'large'} />
